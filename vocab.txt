@@ -1,0 +1,19 @@
+Rentrée -> fjmlf:rentree
+Année universitaire -> fjmlf:anneeUniversitaire	
+Type établissement -> fjmlf:typeEtablissement
+Région	Académie -> fjmlf:regionAcademie
+Categorie de personnels -> fjmlf:CategoriePersonnels
+Sexe -> fjmlf:sexe
+Grande discipline -> fjmlf:grandeDiscipline
+Groupes CNU -> fjmlf:groupeCNU
+Section CNU -> fjmlf:sectionCNU
+Nationalité -> fjmlf:nationalite
+Classe âges -> fjmlf:classeAges
+Quotite travail -> fjmlf:quotiteTravail
+effectif -> fjmlf:effectif
+ID région -> fjmlf:IDRegion
+ID académie -> fjmlf:IDAcademie
+Code categorie personnels -> fjmlf:codeCategoriePersonnels	
+Code section CNU -> fjmlf:codeSectionCNU
+Code groupe CNU -> fjmlf:codeGroupeCNU
+Code grande discipline -> fjmlf:codeGrandeDiscipline
