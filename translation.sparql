@@ -1,0 +1,31 @@
+PREFIX fjmlf: <http://fjmlf.org/teacher/#>
+
+CONSTRUCT {
+  ?URI a fjmlf:enseignant;
+       fjmlf:rentree ?rentree;
+       fjmlf:anneeUniversitaire ?annee_univ;
+       fjmlf:typeEtablissement ?type_etablissement;
+       fjmlf:region ?region;
+       fjmlf:academie ?academie;
+       fjmlf:categoriePersonnels ?categorie_personnels;
+       fjmlf:sexe ?sexe;
+       fjmlf:grandeDiscipline ?grande_discipline;
+       fjmlf:groupeCNU ?groupe_cnu;
+       fjmlf:sectionCNU ?section_cnu;
+       fjmlf:nationalite ?nationalite;
+       fjmlf:classeAges ?classe_ages;
+       fjmlf:quotiteTravail ?quotite_travail;
+       fjmlf:effectif ?effectif;
+       fjmlf:IDRedion ?id_region;
+       fjmlf:IDAcademie ?id_academie;
+       fjmlf:codeCategoriePersonnels ?code_categorie_personnels;
+       fjmlf:codeSectionCNU ?code_section_cnu;
+       fjmlf:codeGroupeCNU ?code_groupe_cnu;
+       fjmlf:codeGrandeDispline ?code_grande_discipline;
+} 
+FROM <file:liste_enseignants.csv#delimiter=semicolon>
+WHERE {
+  BIND (URI(CONCAT('http://fjmlf.org/teacher/', ?code_section_cnu)) AS ?URI)
+  # BIND (xsd:integer(?numEmps) AS ?numEmployees)
+  # BIND (xsd:decimal(?raisedAmt) AS ?amount)
+}
