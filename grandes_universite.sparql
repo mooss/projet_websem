@@ -1,0 +1,11 @@
+PREFIX fjmlf: <http://fjmlf.org/teacher/#>
+PREFIX mfmf: <http://ex.org/mfmf/#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?academie (count(?prof) as ?nombre_prof_univ)
+WHERE {
+  ?prof mfmf:academie ?academie.
+  FILTER( ?nombre_prof_univ >= 100)
+}
+GROUP BY ?academie
+FROM <file:liste_enseignants.rdf>

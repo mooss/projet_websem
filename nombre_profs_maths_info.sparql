@@ -1,0 +1,10 @@
+PREFIX fjmlf: <http://fjmlf.org/teacher/#>
+PREFIX mfmf: <http://ex.org/mfmf/#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?nombre_prof (count(?prof) as ?nombre_prof)
+WHERE {
+  ?prof mfmf:section_cnu "Mathématiques et Informatique".
+} 
+FROM <file:liste_enseignants.rdf>
+
