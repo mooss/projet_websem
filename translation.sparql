@@ -1,33 +1,41 @@
-PREFIX fjmlf: <http://fjmlf.org/teacher/#>
+PREFIX fjmlf: <http://exemple.org/fjmlf/#>
 PREFIX mfmf: <http://ex.org/mfmf/#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+# PREFIX schema
+# PREFIX dbo
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
 CONSTRUCT {
-  ?URI a fjmlf:enseignant;
+  ?URI_ENSEIGNANT rdf:type fjmlf:enseignant;
+       rdfs:subClassOf foaf:Person;
        mfmf:annee ?rentree;
        fjmlf:anneeUniversitaire ?annee_univ;
-       fjmlf:typeEtablissement ?type_etablissement;
-       mfmf:region ?region;
-       mfmf:academie ?academie;
        mfmf:groupe_de_corps ?categorie_personnels;
        foaf:gender ?sexe;
        mfmf:secteur_disciplinaire ?grande_discipline;
        mfmf:groupe_cnu ?groupe_cnu;
-       mfmf:section_ncu ?section_cnu;
+       mfmf:section_cnu ?section_cnu;
        fjmlf:nationalite ?nationalite;
        fjmlf:classeAges ?classe_ages;
        fjmlf:quotiteTravail ?quotite_travail;
        fjmlf:effectif ?effectif;
-       fjmlf:IDRedion ?id_region;
-       fjmlf:IDAcademie ?id_academie;
        fjmlf:codeCategoriePersonnels ?code_categorie_personnels;
        mfmf:code_section_cnu ?code_section_cnu;
        mfmf:code_groupe_cnu ?code_groupe_cnu;
-       fjmlf:codeGrandeDispline ?code_grande_discipline;
+       fjmlf:codeGrandeDispline ?code_grande_discipline.
+  ?URI_ETABLISSEMENT rdf:type fjmlf:etablisement;
+       rdfs:subClassOf dbpedia:EducationalInstitution;
+       dbpedia:type ?type_etablissement;
+       dbpedia:region ?region;
+       mfmf:academie ?academie;
+       fjmlf:IDRegion ?id_region;
+       fjmlf:IDAcademie ?id_academie;
 } 
 FROM <file:liste_enseignants.csv#delimiter=semicolon>
 WHERE {
-  BIND (URI(CONCAT('http://fjmlf.org/teacher/', ?code_section_cnu)) AS ?URI)
+  BIND (URI(CONCAT('http://exemple.org/fjmlf/teacher/', STR(?ROWNUM))) AS ?URI_ENSEIGNANT).
+  BIND (URI(CONCAT('http://exemple.org/fjmlf/institution/', STR(?ROWNUM))) AS ?URI_ETABLISSEMENT)
   # BIND (xsd:integer(?numEmps) AS ?numEmployees)
   # BIND (xsd:decimal(?raisedAmt) AS ?amount)
 }
